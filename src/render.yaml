@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: song-of-the-day
+    env: static
+    buildCommand: npm run build
+    publishDir: dist
+    routes:
+      - path: /api/*
+        rewrite: https://api.deezer.com/{path}
