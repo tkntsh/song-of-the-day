@@ -1,0 +1,12 @@
+daemon off;
+worker_processes 1;
+
+events { worker_connections 1024; }
+
+http {
+  server {
+    listen <%= ENV["PORT"] %>;
+    root <%= ENV["STATIC_BUILD_DIR"] || "dist" %>;
+    try_files $uri $uri/ /index.html;
+  }
+}
